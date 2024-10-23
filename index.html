@@ -273,6 +273,48 @@
                 justify-content: center;
             }
         }
+        
+        /* Contact Section */
+        #contact {
+            padding: 6rem 0;
+            background: var(--bg-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon i {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: white;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .social-icon:hover i {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -318,10 +360,15 @@
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
             <div class="social-links">
-                <a href="https://github.com/tritammohanty" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/tritammohanty" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:tritammohanty1801@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/tritammohanty" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/tritammohanty" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:tritammohanty1801@gmail.com" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -340,34 +387,59 @@
                 
                 const projectsContainer = document.getElementById('projects-container');
                 
-                projects
+                const filteredProjects = projects
+                    .filter(project => {
+                        // Filter out the personal website repository and forks
+                        const isPersonalWebsite = project.name.toLowerCase().includes('github.io') || 
+                                                project.name.toLowerCase().includes('portfolio');
+                        return !isPersonalWebsite && !project.fork;
+                    })
                     .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-                    .slice(0, 6)
-                    .forEach(project => {
-                        const projectCard = document.createElement('div');
-                        projectCard.className = 'project-card';
-                        
-                        projectCard.innerHTML = `
-                            <div class="project-content">
-                                <h3 class="project-title">${project.name}</h3>
-                                <p class="project-description">${project.description || 'No description available'}</p>
-                                <div class="project-links">
-                                    <a href="${project.html_url}" target="_blank">
-                                        <i class="fab fa-github"></i> View Code
+                    .slice(0, 6);
+
+                filteredProjects.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'project-card';
+                    
+                    // Create topics/tags HTML if project has topics
+                    const topicsHTML = project.topics && project.topics.length > 0 
+                        ? `<div class="project-topics">
+                            ${project.topics.map(topic => `<span class="tech-badge">${topic}</span>`).join('')}
+                           </div>`
+                        : '';
+                    
+                    projectCard.innerHTML = `
+                        <div class="project-content">
+                            <h3 class="project-title">${project.name}</h3>
+                            <p class="project-description">${project.description || 'No description available'}</p>
+                            ${topicsHTML}
+                            <div class="project-links">
+                                <a href="${project.html_url}" target="_blank">
+                                    <i class="fab fa-github"></i> View Code
+                                </a>
+                                ${project.homepage ? `
+                                    <a href="${project.homepage}" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
                                     </a>
-                                    ${project.homepage ? `
-                                        <a href="${project.homepage}" target="_blank">
-                                            <i class="fas fa-external-link-alt"></i> Live Demo
-                                        </a>
-                                    ` : ''}
-                                </div>
+                                ` : ''}
                             </div>
-                        `;
-                        
-                        projectsContainer.appendChild(projectCard);
-                    });
+                        </div>
+                    `;
+                    
+                    projectsContainer.appendChild(projectCard);
+                });
             } catch (error) {
                 console.error('Error fetching GitHub projects:', error);
+                // Add fallback content if GitHub API fails
+                const projectsContainer = document.getElementById('projects-container');
+                projectsContainer.innerHTML = `
+                    <div class="project-card">
+                        <div class="project-content">
+                            <p>Projects are loading...</p>
+                            <p>Please check back in a moment.</p>
+                        </div>
+                    </div>
+                `;
             }
         }
 
