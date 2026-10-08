@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tritammohanty.github.io/sitemap.xml

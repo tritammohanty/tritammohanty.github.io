@@ -1,0 +1,48 @@
+# Tritam Mohanty | Portfolio
+
+Next.js App Router, React, TypeScript, Tailwind CSS v4, official local shadcn/ui components with Radix, Lucide, Motion, React Hook Form, and Zod. Fully static: no server, database, authentication, Supabase, or Vercel services.
+
+## Run
+
+Requires Node.js 22.13+ and pnpm 11.25 (pinned in `package.json`).
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+```sh
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+pnpm check:export
+pnpm preview
+```
+
+The production export is `out/`. Preview runs at http://127.0.0.1:3000 and serves the actual export with compressed assets.
+
+## Content and theme
+
+- `src/lib/content.ts`: publishable biography, project explanations, experience, education, contact links.
+- `src/app/globals.css`: tweakcn-compatible semantic OKLCH theme variables, typography, layout, light/dark palettes. System appearance is the default, with a persistent manual override.
+- `DESIGN.md`: visual decisions, content sourcing, and interaction rules.
+- `public/tritam.jpg`: existing public GitHub profile illustration.
+- `src/lib/repository-snapshot.json`: verified public GitHub snapshot from 8 October 2026, providing immediate content and a fallback. Browser fetching refreshes it on visits; a 15-minute local cache limits API requests. Failed refreshes explicitly label saved results.
+- `src/lib/github.ts`: paginated public GitHub API fetching, timeout, and cache handling. No token required or included. Forks, archived projects, website/portfolio repositories, and profile config repositories are excluded.
+
+Content was adapted from Tritam's profile sourcebook, `LinkedIn Working Draft.md`, which is not included in this repository. Roadmap concepts are not presented as completed work. Education dates and completion claims are omitted because the sourcebook leaves them unconfirmed.
+
+Contact creates a validated `mailto:` draft for the visitor to review and send. It does not send or store submissions. Visitors without a configured email app can copy the visible address.
+
+## GitHub Pages
+
+This project targets the existing root site `tritammohanty.github.io`, not a repository subpath. The source is at the repository root. The included `.github/workflows/deploy.yml` builds and deploys `out/` with official GitHub Pages actions; configure repository Settings → Pages → Source → GitHub Actions when adopting this redesign. The workflow can be triggered manually or from `main`/`master`. Pushing the feature branch does not deploy the redesign.
+
+The original `#hero`, `#projects`, and `#contact` anchors remain supported. `/projects.html` redirects to `/projects/` to retain the previous archive link.
+
+No deployment is performed merely by building or previewing locally. The existing public website remains unchanged until the redesign is merged and the deployment workflow runs, or the workflow is explicitly run on this branch.
+
+## Checks
+
+Browser verification covers small/large mobile, tablet, laptop, and wide desktop widths; live repository loading, category tabs, keyboard navigation, search, sorting, dialogs, email validation, and theme switching. Lighthouse reports are saved under `reports/` (ignored by Git). See `VERIFICATION.md` for the final results and limitations.
