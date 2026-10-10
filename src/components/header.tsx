@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, Moon, Sun, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SectionTracker } from "@/components/section-tracker";
 import {
   Sheet,
   SheetContent,
@@ -32,7 +33,7 @@ const links = [
   { name: "About", href: "/#about" },
 ];
 type Theme = "light" | "dark" | "system";
-export function Header() {
+export function Header({ trackSections = false }: { trackSections?: boolean }) {
   const [theme, setTheme] = useState<Theme>("system");
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
@@ -69,22 +70,26 @@ export function Header() {
         Skip to content
       </a>
       <header className="site-header">
-        <div className="container flex h-[76px] items-center justify-between gap-4">
+        <div className={`container header-layout ${trackSections ? "header-with-tracker" : ""}`}>
           <Link className="wordmark" href="/#hero" aria-label="Tritam, home">
             tritam<span className="text-primary">.</span>
           </Link>
-          <NavigationMenu className="hidden md:flex" aria-label="Main navigation">
-            <NavigationMenuList className="gap-5">
-              {links.map((link) => (
-                <NavigationMenuItem key={link.name}>
-                  <NavigationMenuLink href={link.href} className="nav-link">
-                    {link.name}
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-          <div className="flex items-center gap-2">
+          {trackSections ? (
+            <SectionTracker />
+          ) : (
+            <NavigationMenu className="hidden md:flex" aria-label="Main navigation">
+              <NavigationMenuList className="gap-5">
+                {links.map((link) => (
+                  <NavigationMenuItem key={link.name}>
+                    <NavigationMenuLink href={link.href} className="nav-link">
+                      {link.name}
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          )}
+          <div className="header-actions flex items-center gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" aria-label="Change color theme">
@@ -110,7 +115,11 @@ export function Header() {
                 </DropdownMenuRadioGroup>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button asChild className="hidden sm:inline-flex" variant="outline">
+            <Button
+              asChild
+              className={trackSections ? "hidden xl:inline-flex" : "hidden sm:inline-flex"}
+              variant="outline"
+            >
               <Link href="/#contact">
                 Let&apos;s connect <ArrowUpRight />
               </Link>

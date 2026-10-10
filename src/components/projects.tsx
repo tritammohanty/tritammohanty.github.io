@@ -85,7 +85,7 @@ function ProjectDetails({ repo, prominent = false }: { repo: Repository; promine
     <Dialog>
       <DialogTrigger asChild>
         <Button variant={prominent ? "default" : "ghost"} className={prominent ? "" : "px-0"}>
-          Explore project <ArrowUpRight />
+          See how it works <ArrowUpRight />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-xl">

@@ -1,5 +1,21 @@
 # Verification
 
+## Theme and interaction update, 10 October 2026
+
+Validated against the updated production static export:
+
+- Exact tweakcn Default light/dark colors applied, retaining Geist typography and using semantic foreground tokens on tinted panels. Social preview and favicon assets regenerated in the neutral palette.
+- Home layouts checked at 320, 390, 428, 768, 1280, 1440, and 1920px without horizontal overflow. The compact mobile section links each retain at least 44px touch targets.
+- Section navigation updates on clicks and ordinary scrolling in both directions; the reading-progress line follows page progress. Observers clean up on unmount and adapt on resize.
+- Mobile project dialog and navigation sheet open and dismiss with Escape. No browser console errors or warnings were recorded in the inspected preview.
+- Scroll-driven interests strip is clipped within its own region. Repeated visual content is hidden from assistive technology. Reduced-motion wrapping CSS and the Motion preference hook were reviewed; operating-system preference emulation was not performed in this update.
+- Shared percentage results were removed. The experience highlight now describes SQL, customer journey analysis, reporting, and contributions to team strategy.
+- ESLint, TypeScript, formatting, GitHub integration tests, production build, and the export checker pass. All 49 checked routes, anchors, and static assets resolve.
+
+The earlier Lighthouse scores and contrast measurements below describe the 8 October design, not this palette update; Lighthouse was not rerun for this update.
+
+## Initial redesign, 8 October 2026
+
 Validated on 8 October 2026 using the production static export.
 
 - ESLint: passes without warnings or errors.

@@ -9,6 +9,7 @@ import {
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
+import { InterestStrip } from "@/components/interest-strip";
 import { Projects } from "@/components/projects";
 import { Contact } from "@/components/contact";
 import { Button } from "@/components/ui/button";
@@ -23,7 +24,7 @@ import { education, experience, profile } from "@/lib/content";
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header trackSections />
       <main id="main-content">
         <section id="hero" className="container hero">
           <div>
@@ -72,6 +73,7 @@ export default function Home() {
             </Reveal>
           </div>
         </section>
+        <InterestStrip />
         <section id="projects" className="container section">
           <Reveal>
             <h2 className="section-title">
@@ -98,12 +100,12 @@ export default function Home() {
               </p>
               <div className="outcome">
                 <ChartNoAxesCombined className="text-primary" size={25} />
-                <p className="mt-5 text-4xl font-medium tracking-tight">
-                  23% <span className="text-muted-foreground">→</span> 30%
-                </p>
+                <h3 className="mt-5 text-2xl font-medium tracking-tight leading-snug">
+                  Connecting data, journeys, and decisions.
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Reported voucher redemption after team changes informed by customer journey
-                  analysis. My contribution: SQL analysis and channel insights.
+                  I write SQL, examine customer journeys, and turn findings into reporting that
+                  helps the team refine targeting and channel strategy.
                 </p>
               </div>
             </Reveal>

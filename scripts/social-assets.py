@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 root = Path(__file__).resolve().parent.parent / 'public'
-bg, ink, accent = '#f5f8f5', '#202720', '#235d40'
+bg, ink, accent = '#ffffff', '#0a0a0a', '#171717'
 font_dir = Path('C:/Windows/Fonts')
 large = ImageFont.truetype(str(font_dir / 'segoeuib.ttf'), 104)
 body = ImageFont.truetype(str(font_dir / 'segoeui.ttf'), 38)
@@ -12,7 +12,7 @@ draw = ImageDraw.Draw(image)
 draw.text((72, 65), 'AI ENGINEER & GENERALIST', fill=accent, font=label)
 draw.text((65, 165), 'Tritam Mohanty.', fill=ink, font=large)
 draw.text((72, 340), 'Curious by nature. Building with AI.', fill=ink, font=body)
-draw.line((72, 515, 1128, 515), fill='#ccd4cc', width=2)
+draw.line((72, 515, 1128, 515), fill='#e5e5e5', width=2)
 draw.text((72, 550), 'tritammohanty.github.io', fill=accent, font=label)
 image.save(root / 'social.png', optimize=True)
 icon = Image.new('RGB', (180, 180), accent)

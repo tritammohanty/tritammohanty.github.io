@@ -25,7 +25,8 @@ The production export is `out/`. Preview runs at http://127.0.0.1:3000 and serve
 ## Content and theme
 
 - `src/lib/content.ts`: publishable biography, project explanations, experience, education, contact links.
-- `src/app/globals.css`: tweakcn-compatible semantic OKLCH theme variables, typography, layout, light/dark palettes. System appearance is the default, with a persistent manual override.
+- `src/app/globals.css`: tweakcn Default light/dark color tokens, shadcn radius scale, typography, and layout. System appearance is the default, with a persistent manual override. Geist typography is retained.
+- `src/components/section-tracker.tsx` and `interest-strip.tsx`: accessible section navigation and a scroll-driven interests strip, with a static wrapping alternative for reduced motion. No animation or UI libraries were added.
 - `DESIGN.md`: visual decisions, content sourcing, and interaction rules.
 - `public/tritam.jpg`: existing public GitHub profile illustration.
 - `src/lib/repository-snapshot.json`: verified public GitHub snapshot from 8 October 2026, providing immediate content and a fallback. Browser fetching refreshes it on visits; a 15-minute local cache limits API requests. Failed refreshes explicitly label saved results.
