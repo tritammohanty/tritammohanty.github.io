@@ -1,13 +1,17 @@
 import { ArrowUpRight, CodeXml, ContactRound } from "lucide-react";
 import Link from "next/link";
 import { profile } from "@/lib/content";
+import { BuildNotes } from "@/components/build-notes";
 export function Footer() {
   return (
     <footer className="container footer">
       <Link href="/#hero" className="wordmark">
         tritam<span className="text-primary">.</span>
       </Link>
-      <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Tritam Mohanty</p>
+      <div className="footer-credit">
+        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Tritam Mohanty</p>
+        <BuildNotes />
+      </div>
       <div className="flex items-center gap-5">
         <a href={profile.github} className="footer-link" target="_blank" rel="noreferrer">
           <CodeXml size={17} />

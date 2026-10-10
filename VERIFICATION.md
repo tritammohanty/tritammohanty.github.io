@@ -1,5 +1,13 @@
 # Verification
 
+## Portrait and build-credit update, 10 October 2026
+
+- Added a larger 4:5 portrait composition alongside the two-line name and introduction. Mobile places the portrait after the main action. The current public illustration remains until a real photograph is supplied; source, dimensions, alt text, and crop position are centralized in the profile content.
+- Checked portrait layouts at 320, 390, 428, 768, 1024, 1280, 1440, and 1920px without horizontal overflow. At the inspected 1280px desktop width, the main action ends at 649px from the viewport top.
+- The footer "Vibe coded with Codex" credit opens a shadcn build-notes dialog with an actual public source link. At 320 × 640px, the dialog stays 16px from each viewport edge and scrolls internally. Keyboard focus stays inside the dialog, Escape dismisses it, and no console errors or warnings were recorded.
+- ESLint, TypeScript, formatting of edited source, production build, and all 49 export link/asset checks pass. No additional packages, services, or application backend were introduced.
+- Portrait hover is restricted to pointer devices and disabled under reduced motion. The CSS fallback was reviewed; no operating-system motion preference emulation was performed.
+
 ## Theme and interaction update, 10 October 2026
 
 Validated against the updated production static export:

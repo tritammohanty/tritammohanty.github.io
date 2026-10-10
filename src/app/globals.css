@@ -253,7 +253,25 @@
     transform: translateY(0);
   }
   .hero {
-    padding-block: 58px 70px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 28px 96px;
+    padding-block: 48px 60px;
+    align-items: start;
+  }
+  .hero-heading,
+  .hero-introduction {
+    grid-column: 1;
+  }
+  .hero-introduction {
+    grid-row: 2;
+  }
+  .hero-portrait {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    min-width: 0;
+    padding-right: 12px;
   }
   .eyebrow {
     font-family: var(--font-mono);
@@ -263,20 +281,13 @@
     color: var(--muted-foreground);
   }
   .hero-name {
-    font-size: clamp(3.7rem, 9.4vw, 8.8rem);
+    font-size: clamp(3.7rem, 6.6vw, 7.2rem);
     letter-spacing: -0.075em;
     line-height: 1.02;
     font-weight: 550;
   }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 70px;
-    margin-top: 55px;
-    align-items: end;
-  }
   .hero-statement {
-    font-size: clamp(1.9rem, 3.3vw, 3rem);
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
     line-height: 1.1;
     letter-spacing: -0.045em;
     font-weight: 450;
@@ -288,20 +299,28 @@
     color: var(--muted-foreground);
     margin-block: 22px 27px;
   }
-  .hero-aside {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding-bottom: 4px;
+  .portrait-frame {
+    padding: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transform: rotate(1.8deg);
+    box-shadow: 10px 10px 0 var(--secondary);
+    transition: transform 220ms ease;
+  }
+  .portrait-caption {
+    max-width: 34ch;
+    margin-top: 28px;
+    padding-inline: 8px;
   }
   .portrait {
-    width: 138px;
-    height: 164px;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: center;
-    border-radius: var(--radius-lg);
-    filter: saturate(0.6);
-    flex-shrink: 0;
+    border-radius: var(--radius-sm);
   }
   .text-link {
     display: inline-flex;
@@ -540,6 +559,34 @@
   .footer-link:hover {
     color: var(--primary);
   }
+  .footer-credit {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .build-credit {
+    justify-content: start;
+    align-self: start;
+    margin-left: -8px;
+    padding-inline: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--muted-foreground);
+  }
+  .build-decisions {
+    display: grid;
+    gap: 18px;
+  }
+  .build-decisions dt {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .build-decisions dd {
+    margin-top: 5px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
   [data-slot="button"] {
     min-height: 44px;
     box-shadow: none;
@@ -634,18 +681,9 @@ textarea:focus-visible {
   }
 }
 @media (max-width: 1023px) {
-  .hero-grid {
-    grid-template-columns: 1.2fr 1fr;
-    gap: 32px;
-  }
-  .hero-aside {
-    flex-direction: column;
-    align-items: start;
-    gap: 18px;
-  }
-  .portrait {
-    width: 92px;
-    height: 100px;
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 28px 40px;
   }
   .experience-grid,
   .about-grid {
@@ -696,27 +734,27 @@ textarea:focus-visible {
     padding-inline: 16px;
   }
   .hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
     padding-block: 36px 44px;
   }
   .hero-name {
     font-size: clamp(3.35rem, 10.4vw, 5rem);
     line-height: 1.05;
   }
-  .hero-grid {
-    grid-template-columns: 1fr;
-    margin-top: 32px;
-    gap: 38px;
+  .hero-portrait {
+    grid-column: 1;
+    grid-row: 3;
+    width: min(100%, 320px);
+    justify-self: end;
+    margin-top: 10px;
   }
-  .hero-aside {
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
+  .portrait-frame {
+    width: 220px;
+    margin-left: auto;
   }
-  .hero-aside .text-link {
-    margin-top: 6px;
-  }
-  .hero-aside p {
-    font-size: 13px;
+  .portrait-caption {
+    margin-top: 26px;
   }
   .hero-statement {
     font-size: 32px;
@@ -755,7 +793,7 @@ textarea:focus-visible {
   .footer {
     flex-wrap: wrap;
   }
-  .footer > div {
+  .footer > div:not(.footer-credit) {
     width: 100%;
   }
 }
@@ -807,6 +845,9 @@ textarea:focus-visible {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .portrait-frame {
+    transform: none;
+  }
   .interest-strip-track {
     width: 100%;
     transform: none !important;
@@ -829,5 +870,10 @@ textarea:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .portrait-composition:hover .portrait-frame {
+    transform: rotate(0deg);
   }
 }

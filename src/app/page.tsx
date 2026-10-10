@@ -27,51 +27,55 @@ export default function Home() {
       <Header trackSections />
       <main id="main-content">
         <section id="hero" className="container hero">
-          <div>
-            <p className="eyebrow mb-7">AI Engineer & Generalist</p>
+          <div className="hero-heading">
+            <p className="eyebrow mb-5">AI Engineer & Generalist</p>
             <h1 className="hero-name">
               Tritam
-              <br className="sm:hidden" /> Mohanty<span className="text-primary">.</span>
+              <br /> Mohanty<span className="text-primary">.</span>
             </h1>
           </div>
-          <div className="hero-grid">
-            <Reveal delay={0.08}>
-              <h2 className="hero-statement">
-                Curious by nature.
-                <br />
-                Building with AI.
-              </h2>
-              <p className="hero-description">
-                I turn ideas into useful applications, connecting AI, data, and the systems behind
-                real problems.
-              </p>
-              <Button asChild size="lg">
-                <a href="#projects">
-                  Explore my work <ArrowDownRight />
-                </a>
-              </Button>
-            </Reveal>
-            <Reveal className="hero-aside" delay={0.15}>
-              <Image
-                src="/tritam.jpg"
-                alt="Tritam's illustrated GitHub profile portrait"
-                width={400}
-                height={400}
-                priority
-                className="portrait"
-              />
-              <div>
-                <p className="text-base font-medium">A builder with a data foundation.</p>
-                <p className="mt-2 max-w-[29ch] text-sm leading-relaxed text-muted-foreground">
+          <Reveal className="hero-introduction" delay={0.08}>
+            <h2 className="hero-statement">
+              Curious by nature.
+              <br />
+              Building with AI.
+            </h2>
+            <p className="hero-description">
+              I turn ideas into useful applications, connecting AI, data, and the systems behind
+              real problems.
+            </p>
+            <Button asChild size="lg">
+              <a href="#projects">
+                Explore my work <ArrowDownRight />
+              </a>
+            </Button>
+          </Reveal>
+          <Reveal className="hero-portrait" delay={0.15}>
+            <figure className="portrait-composition">
+              <div className="portrait-frame">
+                <Image
+                  src={profile.portrait.src}
+                  alt={profile.portrait.alt}
+                  width={profile.portrait.width}
+                  height={profile.portrait.height}
+                  sizes="(max-width: 767px) 220px, (max-width: 1023px) 280px, 340px"
+                  priority
+                  className="portrait"
+                  style={{ objectPosition: profile.portrait.position }}
+                />
+              </div>
+              <figcaption className="portrait-caption">
+                <p className="text-sm font-medium">A builder with a data foundation.</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   4+ years across analytics and enterprise systems. Now bringing that perspective to
                   applied AI.
                 </p>
-                <a href="#about" className="text-link mt-4">
+                <a href="#about" className="text-link mt-2">
                   A little more about me <ArrowUpRight size={16} />
                 </a>
-              </div>
-            </Reveal>
-          </div>
+              </figcaption>
+            </figure>
+          </Reveal>
         </section>
         <InterestStrip />
         <section id="projects" className="container section">
