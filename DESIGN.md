@@ -16,11 +16,13 @@ DESIGN_VARIANCE: 6. MOTION_INTENSITY: 4. VISUAL_DENSITY: 4.
 
 ## Structure
 
-Header and navigation; introduction; live selected work and searchable GitHub archive; analytical/enterprise career; personal approach and education; contact dialog; footer.
+Header and navigation; introduction; live selected work, connected-tool projects, and searchable GitHub archive; analytical/enterprise career; personal approach and education; Blog and LinkedIn Post previews and a writing archive; contact dialog; footer.
 
 ## Content integrity
 
-Source: Tritam's LinkedIn Working Draft.md (profile sourcebook, not included in the repository). Preserve formal employer titles. Do not publish roadmap ideas as completed work. Jerry and support triage are described as prototypes with no invented public demo. Education omits unknown dates/completion claims. At Tritam's request, remove shared program percentage outcomes from the portfolio; highlight SQL, customer journey analysis, and reporting contributions instead.
+Source: the latest local LinkedIn profile draft, live-change record, saved project entries, and skills map, synchronized 11 October 2026. Follow Tritam's accepted role chronology and functional analytics title. Do not publish roadmap ideas as completed work. Jerry, support triage, Email MCP, and the team-built air-quality monitor have concise background in shadcn accordions, without invented public demos. Education now includes the supplied dates, MSc completion, IIITB CGPA, BSc gold medal, and IT Club leadership. Shared program percentage outcomes remain omitted; highlight SQL, customer journey analysis, and reporting contributions instead.
+
+This is a content-led extension of the existing design, with DESIGN_VARIANCE 6, MOTION_INTENSITY 4, and VISUAL_DENSITY 4 retained. Connected projects use compact shadcn accordions rather than another card grid. Blog and LinkedIn Post sections use sparse dividers and typography, with accessible shadcn format tabs in the writing archive. Project stories, tutorials, and AI news are the future content scope. Show the existing LinkedIn post and an honest empty Blog state. Content generation and external publishing belong to Tritam's separate project.
 
 ## Functionality
 

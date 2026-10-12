@@ -14,6 +14,7 @@ const sections = [
   { id: "projects", label: "Projects", compact: "Work" },
   { id: "experience", label: "Experience", compact: "Career" },
   { id: "about", label: "About", compact: "About" },
+  { id: "writing", label: "Writing", compact: "Read" },
   { id: "contact", label: "Contact", compact: "Contact" },
 ];
 

@@ -162,6 +162,7 @@
   }
   .section-tracker-link {
     min-height: 44px;
+    min-width: 44px;
     justify-content: center;
     padding: 10px 12px;
     font-size: 13px;
@@ -798,6 +799,10 @@ textarea:focus-visible {
   }
 }
 @media (max-width: 479px) {
+  .section-tracker-link {
+    padding-inline: 4px;
+    font-size: 11px;
+  }
   .repository-grid,
   .timeline {
     grid-template-columns: 1fr;

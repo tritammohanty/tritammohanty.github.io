@@ -31,6 +31,7 @@ const links = [
   { name: "Projects", href: "/#projects" },
   { name: "Experience", href: "/#experience" },
   { name: "About", href: "/#about" },
+  { name: "Writing", href: "/writing/" },
 ];
 type Theme = "light" | "dark" | "system";
 export function Header({ trackSections = false }: { trackSections?: boolean }) {

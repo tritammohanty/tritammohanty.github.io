@@ -46,6 +46,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Reveal } from "./reveal";
+import { ConnectedProjects } from "./connected-projects";
 import repositorySnapshot from "@/lib/repository-snapshot.json";
 
 const categories = ["All", "Applied AI", "Machine learning", "Computer vision", "Other"];
@@ -88,8 +89,8 @@ function ProjectDetails({ repo, prominent = false }: { repo: Repository; promine
           See how it works <ArrowUpRight />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-xl">
-        <DialogHeader>
+      <DialogContent className="w-[calc(100vw_-_2rem)] max-h-[calc(100dvh_-_2rem)] overflow-y-auto sm:max-w-xl">
+        <DialogHeader className="pr-6 text-left">
           <DialogTitle className="text-2xl">{note?.title ?? repo.name}</DialogTitle>
           <DialogDescription>
             {note?.category ?? repo.language ?? "Public repository"}
@@ -293,6 +294,7 @@ export function Projects({ archiveOnly = false }: { archiveOnly?: boolean }) {
               ))}
             </Reveal>
           )}
+          {!archiveOnly && <ConnectedProjects />}
           {(visible.length > 0 || !error) && (
             <div className={archiveOnly ? "" : "mt-14"}>
               <div className="mb-6 flex flex-wrap items-center justify-between gap-3">

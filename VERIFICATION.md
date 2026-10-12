@@ -1,5 +1,16 @@
 # Verification
 
+## Profile and writing update, 12 October 2026
+
+- Synchronized biography, skills, role titles/dates, education, and project background with the local saved LinkedIn records verified on 10-11 October. The current analytics role uses the accepted functional public title. Shared redemption-rate metrics remain absent from the rendered page.
+- Added Jerry, Customer Support Triage, Email MCP, and the team-built air-quality monitor in keyboard-accessible shadcn accordions. The GitHub repository feed remains intact.
+- Added home Blog and LinkedIn Post sections and `/writing/`, backed by a single Zod-validated public JSON content file. The existing 8 October LinkedIn post is shown; the blog empty state accurately says there are no articles yet. A separate project can provide reviewed content without adding a site backend.
+- Writing tests verify draft/future exclusion, chronological ordering, nonempty published article content, valid dates, unique IDs, and LinkedIn destinations. GitHub integration tests still pass.
+- Home checked at 320, 390, 768, 1280, and 1920px without horizontal overflow. After the final tablet adjustment, all section links retain at least 44px width and height. The writing page was inspected at 320px; its tabs wrap and remain touch-sized. Arrow keys select Blog and LinkedIn tabs, showing the correct empty/populated panels.
+- Longer project dialogs stay within the 320 x 640px viewport and scroll internally. Accordion Enter/ArrowDown behavior and dialog Escape dismissal verified. Light and dark previews inspected; no console warnings or errors recorded in the inspected preview. Reduced-motion hooks and CSS remain unchanged.
+- ESLint, TypeScript, formatting, production build, and all 78 export route/anchor/asset checks pass.
+- Lighthouse mobile audit of the final home export: performance 86, accessibility 100, best practices 100, SEO 100. LCP is 3.8 seconds, total blocking time 170ms, and CLS 0. The simulated LCP remains above the 2.5-second target; deployed field measurement is still needed. These are automated audit results, not accessibility certification. Report: `reports/profile-writing-lighthouse.json` (ignored by Git).
+
 ## Portrait and build-credit update, 10 October 2026
 
 - Added a larger 4:5 portrait composition alongside the two-line name and introduction. Mobile places the portrait after the main action. The current public illustration remains until a real photograph is supplied; source, dimensions, alt text, and crop position are centralized in the profile content.

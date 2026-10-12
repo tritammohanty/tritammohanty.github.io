@@ -12,14 +12,16 @@ import { Reveal } from "@/components/reveal";
 import { InterestStrip } from "@/components/interest-strip";
 import { Projects } from "@/components/projects";
 import { Contact } from "@/components/contact";
+import { WritingSection } from "@/components/writing";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { education, experience, profile } from "@/lib/content";
+import { biography, education, experience, profile } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -28,7 +30,7 @@ export default function Home() {
       <main id="main-content">
         <section id="hero" className="container hero">
           <div className="hero-heading">
-            <p className="eyebrow mb-5">AI Engineer & Generalist</p>
+            <p className="eyebrow mb-5">{biography.role}</p>
             <h1 className="hero-name">
               Tritam
               <br /> Mohanty<span className="text-primary">.</span>
@@ -40,10 +42,7 @@ export default function Home() {
               <br />
               Building with AI.
             </h2>
-            <p className="hero-description">
-              I turn ideas into useful applications, connecting AI, data, and the systems behind
-              real problems.
-            </p>
+            <p className="hero-description">{biography.introduction}</p>
             <Button asChild size="lg">
               <a href="#projects">
                 Explore my work <ArrowDownRight />
@@ -67,8 +66,7 @@ export default function Home() {
               <figcaption className="portrait-caption">
                 <p className="text-sm font-medium">A builder with a data foundation.</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  4+ years across analytics and enterprise systems. Now bringing that perspective to
-                  applied AI.
+                  {biography.portraitCaption}
                 </p>
                 <a href="#about" className="text-link mt-2">
                   A little more about me <ArrowUpRight size={16} />
@@ -84,8 +82,8 @@ export default function Home() {
               Ideas, put into practice<span className="text-primary">.</span>
             </h2>
             <p className="section-description">
-              Conversational systems, model experiments, and a growing body of code. Pulled directly
-              from my GitHub.
+              Conversational AI, model experiments, and connected tools. Public repositories refresh
+              from GitHub, with context for the work alongside them.
             </p>
           </Reveal>
           <Projects />
@@ -135,16 +133,12 @@ export default function Home() {
                 <br />
                 comes first.
               </h2>
-              <p className="mt-7 text-lg leading-relaxed">
-                I chose data science because I wanted a field that would keep challenging me. That
-                curiosity has stayed with me.
-              </p>
-              <p className="mt-5 text-muted-foreground leading-relaxed">
-                I enjoy working through the whole problem: understanding the need, choosing an
-                approach, connecting the pieces, and examining how the system behaves. My work spans
-                language model fine-tuning, connected assistants, predictive modelling, and computer
-                vision.
-              </p>
+              <p className="mt-7 text-lg leading-relaxed">{biography.aboutLead}</p>
+              {biography.about.map((paragraph) => (
+                <p key={paragraph} className="mt-5 text-muted-foreground leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
               <a
                 href={profile.linkedin}
                 target="_blank"
@@ -156,6 +150,13 @@ export default function Home() {
             </Reveal>
             <Reveal className="focus-panel">
               <h3 className="text-xl font-medium mb-5">What I bring to a problem</h3>
+              <div className="mb-5 flex flex-wrap gap-2" aria-label="Highlighted skills">
+                {biography.highlightedSkills.map((skill) => (
+                  <Badge variant="outline" key={skill}>
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
               <Accordion type="single" collapsible defaultValue="ai">
                 <AccordionItem value="ai">
                   <AccordionTrigger>
@@ -164,10 +165,7 @@ export default function Home() {
                       Applied AI & machine learning
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent>
-                    Python, PyTorch, TensorFlow, scikit-learn, LLM fine-tuning, NLP, and model
-                    evaluation.
-                  </AccordionContent>
+                  <AccordionContent>{biography.capabilities.ai}</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="systems">
                   <AccordionTrigger>
@@ -176,11 +174,7 @@ export default function Home() {
                       Agents & connected systems
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent>
-                    n8n agent workflows, MCP integration, conversational memory, and tool-based
-                    assistants. Projects include Jerry, an executive assistant prototype, and a
-                    customer support triage application.
-                  </AccordionContent>
+                  <AccordionContent>{biography.capabilities.systems}</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="analytics">
                   <AccordionTrigger>
@@ -189,10 +183,7 @@ export default function Home() {
                       Analytics & business context
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent>
-                    Complex SQL, customer analytics, segmentation, Excel, Tableau, Power BI, and
-                    Salesforce Marketing Cloud.
-                  </AccordionContent>
+                  <AccordionContent>{biography.capabilities.analytics}</AccordionContent>
                 </AccordionItem>
               </Accordion>
               <h3 className="mt-9 mb-5 text-sm font-medium">Education</h3>
@@ -203,12 +194,17 @@ export default function Home() {
                     <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                       {item.programme}
                     </p>
+                    <p className="mt-2 font-mono text-xs text-muted-foreground">{item.period}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                      {item.recognition}
+                    </p>
                   </div>
                 ))}
               </div>
             </Reveal>
           </div>
         </section>
+        <WritingSection />
         <Contact />
       </main>
       <Footer />

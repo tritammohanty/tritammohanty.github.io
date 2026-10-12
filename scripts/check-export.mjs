@@ -1,7 +1,7 @@
 import { readFile, access } from "node:fs/promises";
 import assert from "node:assert/strict";
 import path from "node:path";
-const routes = ["index.html", "projects/index.html", "projects.html"];
+const routes = ["index.html", "projects/index.html", "writing/index.html", "projects.html"];
 let checks = 0;
 for (const route of routes) {
   const html = await readFile(path.join("out", route), "utf8");
