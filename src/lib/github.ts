@@ -15,6 +15,52 @@ export type Repository = {
 };
 const CACHE_KEY = "tritam-repositories-v1";
 const MAX_AGE = 15 * 60 * 1000;
+const displayWords: Record<string, string> = {
+  ai: "AI",
+  ml: "ML",
+  llm: "LLM",
+  nlp: "NLP",
+  gpt: "GPT",
+  rag: "RAG",
+  mcp: "MCP",
+  api: "API",
+  sql: "SQL",
+  cnn: "CNN",
+  gan: "GAN",
+  ui: "UI",
+  ux: "UX",
+  html: "HTML",
+  css: "CSS",
+  js: "JS",
+  ts: "TS",
+  aws: "AWS",
+  iot: "IoT",
+  pdf: "PDF",
+  csv: "CSV",
+  ocr: "OCR",
+  n8n: "n8n",
+  "3d": "3D",
+  nextjs: "Next.js",
+};
+
+export function formatRepositoryName(name: string): string {
+  return name
+    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
+    .replace(/([a-z\d])([A-Z])/g, "$1 $2")
+    .split(/[\s_.-]+/)
+    .filter(Boolean)
+    .map(
+      (word) =>
+        displayWords[word.toLowerCase()] ??
+        (/^[A-Z\d]+$/.test(word) ? word : word[0].toUpperCase() + word.slice(1)),
+    )
+    .join(" ");
+}
+
+export function repositoryTitle(repo: Pick<Repository, "name">): string {
+  return projectNotes[repo.name]?.title ?? formatRepositoryName(repo.name);
+}
+
 export function readCache(): { repos: Repository[]; fetchedAt: number } | null {
   try {
     const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");

@@ -22,6 +22,23 @@ globalThis.localStorage = {
   setItem: (key, value) => cache.set(key, value),
 };
 try {
+  for (const [name, title] of [
+    ["customer-support-agent", "Customer Support Agent"],
+    ["emailMCPServer", "Email MCP Server"],
+    ["HTTPServer", "HTTP Server"],
+    ["LendingClub_CaseStudy", "Lending Club Case Study"],
+    ["rag-llm-chatbot", "RAG LLM Chatbot"],
+    ["n8n-workflow", "n8n Workflow"],
+    ["3d_cnn", "3D CNN"],
+    ["MyCalculator", "My Calculator"],
+  ])
+    assert.equal(api.formatRepositoryName(name), title);
+  assert.equal(api.repositoryTitle({ name: "customer-support-agent" }), "Customer Support Agent");
+  assert.equal(
+    api.repositoryTitle({ name: "CompanionAI" }),
+    "CompanionAI",
+    "Curated titles take priority",
+  );
   let calls = 0;
   globalThis.fetch = async (url) => {
     calls++;
@@ -65,7 +82,7 @@ try {
     ),
   );
   console.log(
-    "Passed: GitHub pagination, caching, expired cache, rate limits, invalid responses, corrupt cache, and repository filtering.",
+    "Passed: repository display names, curated titles, GitHub pagination, caching, expired cache, rate limits, invalid responses, corrupt cache, and repository filtering.",
   );
 } finally {
   globalThis.fetch = originalFetch;

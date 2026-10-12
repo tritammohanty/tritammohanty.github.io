@@ -20,6 +20,7 @@ import {
   categoryOf,
   fetchRepositories,
   readCache,
+  repositoryTitle,
   visibleRepositories,
   type Repository,
 } from "@/lib/github";
@@ -91,7 +92,7 @@ function ProjectDetails({ repo, prominent = false }: { repo: Repository; promine
       </DialogTrigger>
       <DialogContent className="w-[calc(100vw_-_2rem)] max-h-[calc(100dvh_-_2rem)] overflow-y-auto sm:max-w-xl">
         <DialogHeader className="pr-6 text-left">
-          <DialogTitle className="text-2xl">{note?.title ?? repo.name}</DialogTitle>
+          <DialogTitle className="text-2xl">{repositoryTitle(repo)}</DialogTitle>
           <DialogDescription>
             {note?.category ?? repo.language ?? "Public repository"}
           </DialogDescription>
@@ -132,9 +133,7 @@ function FeaturedProject({ repo, primary = false }: { repo: Repository; primary?
           </p>
           <Icon size={23} strokeWidth={1.5} className="text-primary" />
         </div>
-        <h3 className={primary ? "featured-title" : "supporting-title"}>
-          {note?.title ?? repo.name}
-        </h3>
+        <h3 className={primary ? "featured-title" : "supporting-title"}>{repositoryTitle(repo)}</h3>
         <p className="project-description">{note?.description ?? repo.description}</p>
         {primary && (
           <div
@@ -229,7 +228,7 @@ export function Projects({ archiveOnly = false }: { archiveOnly?: boolean }) {
         .filter(
           (repo) =>
             (category === "All" || categoryOf(repo) === category) &&
-            `${projectNotes[repo.name]?.title ?? ""} ${repo.name} ${repo.description ?? ""} ${repo.language ?? ""} ${(repo.topics ?? []).join(" ")}`
+            `${repositoryTitle(repo)} ${repo.name} ${repo.description ?? ""} ${repo.language ?? ""} ${(repo.topics ?? []).join(" ")}`
               .toLowerCase()
               .includes(query.toLowerCase().trim()),
         )
@@ -237,9 +236,7 @@ export function Projects({ archiveOnly = false }: { archiveOnly?: boolean }) {
           sort === "stars"
             ? b.stargazers_count - a.stargazers_count
             : sort === "name"
-              ? (projectNotes[a.name]?.title ?? a.name).localeCompare(
-                  projectNotes[b.name]?.title ?? b.name,
-                )
+              ? repositoryTitle(a).localeCompare(repositoryTitle(b))
               : Date.parse(b.updated_at) - Date.parse(a.updated_at),
         ),
     [visible, category, query, sort],
@@ -379,7 +376,7 @@ export function Projects({ archiveOnly = false }: { archiveOnly?: boolean }) {
                                 rel="noreferrer"
                                 className="repo-title"
                               >
-                                {projectNotes[repo.name]?.title ?? repo.name}
+                                {repositoryTitle(repo)}
                                 <ArrowUpRight size={16} />
                               </a>
                             </h4>

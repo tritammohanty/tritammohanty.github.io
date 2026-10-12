@@ -4,8 +4,7 @@ export const profile = {
   email: "tritammohanty1801@gmail.com",
   github: "https://github.com/tritammohanty",
   linkedin: "https://linkedin.com/in/tritammohanty",
-  portfolioSource:
-    "https://github.com/tritammohanty/tritammohanty.github.io/tree/feat/portfolio-redesign",
+  portfolioSource: "https://github.com/tritammohanty/tritammohanty.github.io/tree/main",
   portrait: {
     src: "/tritam.jpg",
     alt: "Tritam's illustrated GitHub profile portrait",

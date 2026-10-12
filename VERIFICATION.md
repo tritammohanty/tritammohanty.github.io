@@ -1,5 +1,11 @@
 # Verification
 
+## Production preparation, 12 October 2026
+
+- Repository display names now split separators and camel case, preserve technical acronyms, and retain curated titles. Search and alphabetical sorting use the readable titles; original GitHub names and destinations stay intact.
+- GitHub formatter and integration tests, writing tests, lint, TypeScript production build, and all 78 export checks pass. This change does not alter the previously verified layout or motion behavior.
+- The original site is retained on `master` at `3f655ec84c055919839c9210ffc7e9086ad7fb1a` and backed up under `site-before-redesign-2026-10-12`. Restoration instructions are in `ROLLBACK.md`.
+
 ## Profile and writing update, 12 October 2026
 
 - Synchronized biography, skills, role titles/dates, education, and project background with the local saved LinkedIn records verified on 10-11 October. The current analytics role uses the accepted functional public title. Shared redemption-rate metrics remain absent from the rendered page.
@@ -67,4 +73,4 @@ The accessibility score is automated evidence, not a complete accessibility cert
 
 ## Delivery
 
-Source is in this directory. `out/` is the deployable export. The preview server is a local development utility, not an application backend. The GitHub Pages workflow is prepared but has not been run remotely; the existing public website has not been changed.
+Source is in this directory. `out/` is the deployable export. The preview server is a local development utility, not an application backend. The GitHub Pages workflow publishes production from `main`; local builds and feature branch pushes do not publish. Remote deployment status is available in the repository's Actions tab.
