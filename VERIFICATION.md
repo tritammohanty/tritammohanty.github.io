@@ -1,5 +1,11 @@
 # Verification
 
+## Portrait replacement, 13 October 2026
+
+- Replaced the GitHub illustration with the user-selected `website.png` portrait. Its WebP delivery asset retains the 928 × 1152 source dimensions and uses 80,944 bytes instead of the original 1,576,014-byte PNG. Added descriptive alt text and centered the existing 4:5 presentation.
+- Visually checked desktop at 1440px and small mobile at 320px. The image loads at its expected dimensions, the face remains visible, and neither layout has horizontal overflow. The original Photos folder stays outside the repository.
+- Lint, TypeScript production build, and all 78 export route/anchor/asset checks pass. No layout, interaction, or dependency changes were required.
+
 ## Contact navigation and scheduling, 13 October 2026
 
 - Reproduced the repeated header contact-click failure: with `#contact` still in the address after manual scrolling, the Next.js link left the scroll position unchanged. Header Contact and header/footer Intro links now use native anchors, which re-scroll on repeated clicks and honor the existing reduced-motion CSS. Ordinary cross-page navigation still resolves to the home section.

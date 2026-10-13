@@ -10,11 +10,11 @@ export const profile = {
     durationMinutes: 30,
   },
   portrait: {
-    src: "/tritam.jpg",
-    alt: "Tritam's illustrated GitHub profile portrait",
-    width: 400,
-    height: 400,
-    position: "50% 42%",
+    src: "/tritam-portrait.webp",
+    alt: "Tritam Mohanty in a charcoal blazer against a light background",
+    width: 928,
+    height: 1152,
+    position: "50% 50%",
   },
 };
 
