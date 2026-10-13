@@ -1,13 +1,13 @@
 import { ArrowUpRight, CodeXml, ContactRound } from "lucide-react";
-import Link from "next/link";
 import { profile } from "@/lib/content";
 import { BuildNotes } from "@/components/build-notes";
 export function Footer() {
   return (
     <footer className="container footer">
-      <Link href="/#hero" className="wordmark">
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Native anchor restores Intro even when the current fragment is already #hero. */}
+      <a href="/#hero" className="wordmark">
         tritam<span className="text-primary">.</span>
-      </Link>
+      </a>
       <div className="footer-credit">
         <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Tritam Mohanty</p>
         <BuildNotes />

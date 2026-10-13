@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { ArrowUpRight, Copy, Check } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -51,23 +51,34 @@ export function Contact() {
             I&apos;m happy to talk about AI, data, opportunities, or an idea you can&apos;t stop
             thinking about.
           </p>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="lg">
-                Start a conversation <ArrowUpRight />
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-lg max-h-[90dvh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle className="text-2xl">What are you thinking about?</DialogTitle>
-                <DialogDescription>
-                  Write a note, then open it in your email app. Nothing is sent or stored by this
-                  website.
-                </DialogDescription>
-              </DialogHeader>
-              <ContactDraftForm />
-            </DialogContent>
-          </Dialog>
+          <div className="flex flex-wrap items-center gap-3">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="lg">
+                  Start a conversation <ArrowUpRight />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-lg max-h-[90dvh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl">What are you thinking about?</DialogTitle>
+                  <DialogDescription>
+                    Write a note, then open it in your email app. Nothing is sent or stored by this
+                    website.
+                  </DialogDescription>
+                </DialogHeader>
+                <ContactDraftForm />
+              </DialogContent>
+            </Dialog>
+            <Button asChild size="lg" variant="outline">
+              <a href={profile.booking.url} target="_blank" rel="noreferrer">
+                <CalendarDays /> Book a 1-on-1 <ArrowUpRight />
+                <span className="sr-only">, opens Cal.com in a new tab</span>
+              </a>
+            </Button>
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
+            {profile.booking.durationMinutes} minutes · Video call · Choose a time on Cal.com.
+          </p>
           <div className="mt-6 flex items-center gap-1">
             <a href={`mailto:${profile.email}`} className="email-link">
               {profile.email}

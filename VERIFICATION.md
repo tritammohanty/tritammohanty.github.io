@@ -1,5 +1,12 @@
 # Verification
 
+## Contact navigation and scheduling, 13 October 2026
+
+- Reproduced the repeated header contact-click failure: with `#contact` still in the address after manual scrolling, the Next.js link left the scroll position unchanged. Header Contact and header/footer Intro links now use native anchors, which re-scroll on repeated clicks and honor the existing reduced-motion CSS. Ordinary cross-page navigation still resolves to the home section.
+- Desktop preview verified the repeat-click sequence after manually scrolling away. The contact section returned into view without changing the fragment. Cal.com's connector verified the existing public 30-minute video-call event and available dates; only the public event URL and duration enter the site content.
+- Added a shadcn booking link alongside the email dialog. Mobile actions wrap with 50px button heights. No booking was created, no calendar details were copied into the repository, and no new dependency or site backend was added.
+- Lint, TypeScript production build, and all 78 export checks pass. The published booking flow remains hosted by Cal.com.
+
 ## Production preparation, 12 October 2026
 
 - Repository display names now split separators and camel case, preserve technical acronyms, and retain curated titles. Search and alphabetical sorting use the readable titles; original GitHub names and destinations stay intact.

@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { ArrowUpRight, Menu, Moon, Sun, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionTracker } from "@/components/section-tracker";
@@ -72,9 +71,11 @@ export function Header({ trackSections = false }: { trackSections?: boolean }) {
       </a>
       <header className="site-header">
         <div className={`container header-layout ${trackSections ? "header-with-tracker" : ""}`}>
-          <Link className="wordmark" href="/#hero" aria-label="Tritam, home">
+          {/* Native anchors re-scroll when the fragment already matches after manual scrolling. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a className="wordmark" href="/#hero" aria-label="Tritam, home">
             tritam<span className="text-primary">.</span>
-          </Link>
+          </a>
           {trackSections ? (
             <SectionTracker />
           ) : (
@@ -121,9 +122,10 @@ export function Header({ trackSections = false }: { trackSections?: boolean }) {
               className={trackSections ? "hidden xl:inline-flex" : "hidden sm:inline-flex"}
               variant="outline"
             >
-              <Link href="/#contact">
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Repeated fragment clicks must scroll every time. */}
+              <a href="/#contact">
                 Let&apos;s connect <ArrowUpRight />
-              </Link>
+              </a>
             </Button>
             <Sheet>
               <SheetTrigger asChild>

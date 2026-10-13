@@ -37,7 +37,7 @@ The production export is `out/`. Preview runs at http://127.0.0.1:3000 and serve
 
 Content was updated on 12 October 2026 from the local `LinkedIn Profile Draft.md`, `LinkedIn Change Log.md`, `LinkedIn Projects - Saved Entries.json`, and `LinkedIn Skills Map.md`, which are not included in this repository. The change log records live LinkedIn verification on 10-11 October. Role dates follow Tritam's accepted chronology; the current analytics title is a functional public title. Education dates, MSc completion, IIITB CGPA, and the BSc gold medal now reflect the updated source. Shared redemption-rate results remain omitted at Tritam's request. Roadmap ideas are not presented as completed work; connected-tool projects have descriptive background without invented public repository or demo links.
 
-Contact creates a validated `mailto:` draft for the visitor to review and send. It does not send or store submissions. Visitors without a configured email app can copy the visible address.
+Contact creates a validated `mailto:` draft for the visitor to review and send. It does not send or store submissions. Visitors without a configured email app can copy the visible address. The separate **Book a 1-on-1** button opens Tritam's verified 30-minute Cal.com video-call event in a new tab. Its public URL and duration are editable in `profile.booking`; scheduling and calendar availability are handled by Cal.com, with no booking credentials or calendar data in this repository.
 
 ## GitHub Pages
 

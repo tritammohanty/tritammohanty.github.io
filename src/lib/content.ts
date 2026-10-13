@@ -5,6 +5,10 @@ export const profile = {
   github: "https://github.com/tritammohanty",
   linkedin: "https://linkedin.com/in/tritammohanty",
   portfolioSource: "https://github.com/tritammohanty/tritammohanty.github.io/tree/main",
+  booking: {
+    url: "https://cal.com/tritam-mohanty/30min",
+    durationMinutes: 30,
+  },
   portrait: {
     src: "/tritam.jpg",
     alt: "Tritam's illustrated GitHub profile portrait",
